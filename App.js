@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Button, TextInput } from 'react-native';
+import { Text, View, Button, TextInput ,Image,SafeAreaView,StyleSheet} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -9,6 +9,7 @@ import {
   DrawerItemList,
   DrawerItem
 } from '@react-navigation/drawer';
+import HomeScreen from './screens/HomeScreen';
 
 function FeedScreen() {
   return (
@@ -26,12 +27,27 @@ function ArticleScreen() {
   );
 }
 
+function NotificationsScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Notifications Screen</Text>
+    </View>
+  );
+}
+
+
 function CustomDrawerContent(props) {
   return (
+    <SafeAreaView>
+      <Image
+      source={require("./assets/react_logo.png")}
+      style = {styles.sideMenuProfileIcon}/>
+      
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
-      <DrawerItem label='Help' onPress={() => alert('Link to help')} />
+      <DrawerItem label='close Drawer' onPress={() => props.navigation.closeDrawer()} />
     </DrawerContentScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -42,18 +58,26 @@ function MyDrawer() {
     <Drawer.Navigator
       useLegacyImplementation
       drawerContent={(props) => <CustomDrawerContent {...props} />}
-      screenOptions ={{
-        drawerStyle:{
-          backgroundColor:'pink',
-          width:240
-        }
-      }}
+      // screenOptions ={{
+      //   drawerStyle:{
+      //     backgroundColor:'pink',
+      //     width:240
+      //   }
+      // }}
     >
-      <Drawer.Screen name='Feed' component={FeedScreen} />
-      <Drawer.Screen name='Article' component={ArticleScreen} />
+      <Drawer.Screen name='Home' component={HomeScreen} />
+      <Drawer.Screen name='Notifications' component={NotificationsScreen} />
     </Drawer.Navigator>
   );
 }
+const styles = StyleSheet.create({
+  sideMenuProfileIcon: {
+    resizeMode: 'center',
+    width: 100,
+    height: 100,
+    borderRadius: 100 / 2,
+    alignSelf: 'center',
+  },})
 
 const App = () => {
   return (

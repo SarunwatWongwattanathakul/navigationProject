@@ -9,8 +9,10 @@ const HomeScreen = ({ navigation }) => {
             <Ionicons name='home' size={30} color='#008b8b'/>
             <Text>HomeScreen</Text>
             <Button
-                title='Open Drawer'
-                onPress={() => navigation.openDrawer()}
+                title='เกี่ยวกับเรา'
+                onPress={() => navigation.navigate('About', {
+                    email: 'reactnative.tni.ac.th'
+                })}
             />
         </View>
     )

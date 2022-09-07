@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "navigationProject",
-    "slug": "navigationProject",
+    "name": "navProject",
+    "slug": "navProject",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
