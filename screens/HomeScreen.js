@@ -8,10 +8,10 @@ const HomeScreen = ({ navigation }) => {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Ionicons name='home' size={30} color='#008b8b'/>
             <Text>HomeScreen</Text>
-            {/* <Button
+            <Button
                 title='Open Drawer'
                 onPress={() => navigation.openDrawer()}
-            /> */}
+            />
         </View>
     )
 }
