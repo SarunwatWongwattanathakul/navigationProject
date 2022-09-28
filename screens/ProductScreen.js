@@ -14,17 +14,15 @@ import axios from 'axios';
 const ProductScreen = () => {
   const [product,setProduct] = useState([]);
 
+  const getData = async ()=>{
+    const res = await axios.get('https://api.codingthailand.com/api/course')
+    // console.log(res.data.data)
+    // alert(JSON.stringify(res.data.data))
+    setProduct(res.data.data);
+  }
+
   useEffect(()=>{
-
-    const getData = async ()=>{
-      const res = await axios.get('https://api.codingthailand.com/api/course')
-      // console.log(res.data.data)
-      // alert(JSON.stringify(res.data.data))
-      setProduct(res.data.data);
-    }
-
     getData();
-
   },[])
 
   const _renderItem = ({item})=>{
@@ -37,7 +35,7 @@ const ProductScreen = () => {
             style = {styles.thumbnail}
           />
           <View style={styles.dataContainer}>
-            <View style={styles.dataContainer}>
+            <View style={styles.dataContent}>
               <Text style={styles.title}>
                 {item.title}
               </Text>
